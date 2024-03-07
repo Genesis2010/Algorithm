@@ -6,7 +6,7 @@ func solution(_ s:String) -> [Int] {
     var transCount = 0
     var str = s
 
-    while true {
+    while str != "1" {
         var temp = ""
         str.forEach {
             if $0 == "1" {
@@ -19,10 +19,6 @@ func solution(_ s:String) -> [Int] {
         let binaryNum = String(temp.count, radix: 2)
         str = binaryNum
         transCount += 1
-        
-        if str == "1" {
-            break
-        }
     }
     
     return [transCount, count]
