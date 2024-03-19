@@ -1,6 +1,5 @@
 let input = Int(readLine()!)!
 var cookieMap = [[String]]()
-var findHeart = false
 var heart = (0,0)
 var arm = (0,0)
 var leg = (0,0)
@@ -11,9 +10,8 @@ for _ in 0..<input {
 }
 
 for i in 0..<input {
-    if !findHeart && (cookieMap[i].filter{$0 == "*"}.count == 1) {
+    if cookieMap[i].filter{$0 == "*"}.count == 1 {
         heart = (i+1, cookieMap[i].firstIndex(of: "*")!)
-        findHeart = true
         break
     }
 }
