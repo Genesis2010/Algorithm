@@ -1,16 +1,10 @@
-let n = Int(readLine()!)!
+var cache = [0,1,1]
 
-func fibonacci(_ n: Int) -> Int {
-    
-    var numbers: Array<Int> = [0,1,1]
-    for i in 0...n{
-        if i == 0 || i == 1 || i == 2{
-            continue
-        } else {
-            numbers.append(numbers[i-1] + numbers[i-2])
-        }
+let input = Int(readLine()!)!
+
+if input > 2 {
+    for i in 3...input {
+        cache.append(cache[i-1] + cache[i-2])
     }
-    return numbers[n]
 }
-
-print(fibonacci(n))
+print(cache[input])
