@@ -7,22 +7,14 @@ func solution(_ s:String) -> Int {
     
     for i in 0..<s.count {
         if !stack.isEmpty {
-            let letter = stack.popLast()!
-            
-            if letter == str[i] {
-                continue
+            if stack.last! == str[i] {
+                stack.popLast()!
             } else {
-                stack.append(letter)
                 stack.append(str[i])
             }
         } else {
             stack.append(str[i])
         }
     }
-    
-    if stack.isEmpty {
-        return 1
-    } else {
-        return 0
-    }
-}
+    return stack.isEmpty ? 1 : 0
+}  
