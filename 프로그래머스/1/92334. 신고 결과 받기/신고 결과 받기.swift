@@ -6,7 +6,6 @@ func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
     
     for data in report {
         let splitData = data.split(separator: " ").map{ String($0) }
-
         reportData[splitData[1], default: Set()].insert(splitData[0])
     }
     
