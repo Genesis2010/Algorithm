@@ -14,9 +14,6 @@ def bfs(n, m, MAP):
 
     while queue:
         y, x = queue.popleft()
-        
-        if y == n-1 and x == m-1:
-            break
 
         for i in range(4):
             ny = y + dy[i]
