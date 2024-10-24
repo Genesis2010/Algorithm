@@ -10,6 +10,10 @@ for i in input {
 let m = Int(readLine()!)!
 let input2 = readLine()!.split(separator: " ").map{Int($0)!}
 
+var result = [Int]()
+
 for i in input2 {
-    print(dict[i] ?? 0, terminator: " ")
+    result.append(dict[i] ?? 0)
 }
+
+print(result.map{String($0)}.joined(separator: " "))
