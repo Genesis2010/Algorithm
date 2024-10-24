@@ -1,7 +1,7 @@
 let nm = readLine()!.split(separator: " ").map{Int($0)!}
 let n = nm[0], m = nm[1]
 
-var notListen = Set<String>()
+var notListen = Set<String>(minimumCapacity: n)
 var result = [String]()
 
 for _ in 0..<n {
