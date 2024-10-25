@@ -1,15 +1,12 @@
 let n = Int(readLine()!)!
-let input = readLine()!.split(separator: " ").map{Int($0)!}
-
-var setA = Set(input)
+let a = Set(readLine()!.split(separator: " ").map { Int(String($0))! })
 
 let m = Int(readLine()!)!
-let input2 = readLine()!.split(separator: " ").map{Int($0)!}
+let input = readLine()!.split(separator: " ").map{Int($0)!}
+var result = ""
 
-for char in input2 {
-    if setA.contains(char) {
-        print(1)
-    } else {
-        print(0)
-    }
+input.forEach { 
+    result += a.contains($0) ? "1\n" : "0\n"
 }
+
+print(result)
