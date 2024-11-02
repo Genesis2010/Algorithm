@@ -1,7 +1,5 @@
-import Foundation
-
 let n = Int(readLine()!)!
-let arr = readLine()!.split(separator: " ").map { Int(String($0))! }
+let arr = readLine()!.split(separator: " ").map { Int($0)! }
 var dp = Array(repeating: 1, count: n)
 
 for i in 1..<n {
