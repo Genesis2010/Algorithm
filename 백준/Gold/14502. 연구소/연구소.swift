@@ -25,6 +25,7 @@ for i in 0..<n {
 let dx = [-1, 1, 0, 0]
 let dy = [0, 0, -1 ,1]
 
+
 for i in 0..<emptyPositions.count {
     for j in i+1..<emptyPositions.count {
         for k in j+1..<emptyPositions.count {
@@ -38,15 +39,16 @@ for i in 0..<emptyPositions.count {
             tempMap[position2.0][position2.1] = 1
             tempMap[position3.0][position3.1] = 1
             
-            bfs(tempMap)
+            bfs(&tempMap)
+            
+            maxSafeArea = max(search(tempMap), maxSafeArea)
         }
     }
 }
 
 print(maxSafeArea)
 
-func bfs(_ tempMap: [[Int]]) {
-    var tempMap = tempMap
+func bfs(_ tempMap: inout [[Int]]) {
     var index = 0
     var queue = virusPositions
     
@@ -65,17 +67,18 @@ func bfs(_ tempMap: [[Int]]) {
         
         index += 1
     }
+}
+
+func search(_ tempMap: [[Int]]) -> Int {
+    var count = 0
     
-    var temp = 0
-     for i in 0..<n {
-         for j in tempMap[i] {
-             if j == 0 {
-                 temp += 1
-             }
-         }
-     }
+    for i in 0..<tempMap.count {
+        for j in 0..<tempMap[i].count {
+            if tempMap[i][j] == 0 {
+                count += 1
+            }
+        }
+    }
     
-     if maxSafeArea < temp {
-         maxSafeArea = temp
-     }
+    return count
 }
