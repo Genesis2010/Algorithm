@@ -1,16 +1,34 @@
-let n = Int(readLine()!)!
-var dp = [Int](repeating: 0, count: n+1)
+import Foundation
 
-if n > 1 {
-    for i in 2..<n+1 {
-        dp[i] = dp[i-1] + 1
-        if i % 3 == 0 {
-            dp[i] = min(dp[i], dp[i/3]+1)
+func bfsMinimumSteps(_ n: Int) -> Int {
+    var visited = Set<Int>() // 방문한 숫자를 저장
+    var queue = [(n, 0)] // (현재 숫자, 연산 횟수)
+    
+    while !queue.isEmpty {
+        let (current, steps) = queue.removeFirst()
+        
+        if current == 1 {
+            return steps
         }
-        if i % 2 == 0 {
-            dp[i] = min(dp[i], dp[i/2]+1)
+        
+        if visited.contains(current) {
+            continue
         }
+        
+        visited.insert(current)
+
+        if current % 3 == 0 {
+            queue.append((current / 3, steps + 1))
+        }
+        if current % 2 == 0 {
+            queue.append((current / 2, steps + 1))
+        }
+        queue.append((current - 1, steps + 1))
     }
+    
+    return -1
 }
 
-print(dp[n])
+// 테스트 실행
+let n = Int(readLine()!)!
+print(bfsMinimumSteps(n))
